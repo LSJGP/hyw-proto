@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package hyw_planner.proto;
+
+import "proto/sim/runtime.proto";
+
+service PlannerService {
+  rpc ListPlanners(ListPlannersRequest) returns (ListPlannersResponse);
+  rpc CreateSession(CreateSessionRequest) returns (CreateSessionResponse);
+  rpc Plan(PlanRequest) returns (PlanResponse);
+  rpc CloseSession(CloseSessionRequest) returns (CloseSessionResponse);
+  rpc Health(HealthRequest) returns (HealthResponse);
+}
+
+message ListPlannersRequest {}
+
+message ListPlannersResponse {
+  repeated string planner_names = 1;
+}
+
+message CreateSessionRequest {
+  string planner_name = 1;
+  hyw_sim.proto.PlannerInputs inputs = 2;
+}
+
+message CreateSessionResponse {
+  string session_id = 1;
+  string planner_name = 2;
+}
+
+message PlanRequest {
+  string session_id = 1;
+  hyw_sim.proto.PlannerObservation observation = 2;
+}
+
+message PlanResponse {
+  hyw_sim.proto.PlannerTrajectory trajectory = 1;
+}
+
+message CloseSessionRequest {
+  string session_id = 1;
+}
+
+message CloseSessionResponse {}
+
+message HealthRequest {}
+
+message HealthResponse {
+  bool ok = 1;
+  string version = 2;
+}

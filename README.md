@@ -1,6 +1,6 @@
 # hyw-proto
 
-全项目唯一的 `.proto` 定义。`hyw-sim`、`hyw-grading` 通过 Bazel 引用本仓。
+全项目唯一的 `.proto` 定义。`hyw-sim`、`hyw-planner`、`hyw-grading` 通过 Bazel 引用本仓。
 
 ---
 
@@ -124,3 +124,16 @@
 |------|------|
 | `LaneDepartureCheckerConfig` | 偏离车道/路沿的最小净空 |
 | `DrivableAreaCheckerConfig` | 可行驶区域净空（是否只检查中心点） |
+
+---
+
+## `proto/planner/` — `package hyw_planner.proto`
+
+| 定义 | 含义 |
+|------|------|
+| `PlannerService` | gRPC 服务：ListPlanners / CreateSession / Plan / CloseSession / Health |
+| `CreateSessionRequest` | 创建 planner 实例（含 `PlannerInputs`） |
+| `PlanRequest` | 单步规划输入（session + `PlannerObservation`） |
+| `PlanResponse` | 单步规划输出（`PlannerTrajectory`） |
+
+Bazel target：`//proto/planner:planner_cc_grpc`（C++ message + gRPC stub/server）。
