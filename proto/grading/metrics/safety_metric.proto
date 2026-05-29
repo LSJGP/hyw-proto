@@ -11,3 +11,7 @@ message DrivableAreaCheckerConfig {
   double min_clearance_m = 1;
   bool check_center_only = 2;
 }
+
+message SolidLineCrossingCheckerConfig {
+  double min_clearance_m = 1;
+}
