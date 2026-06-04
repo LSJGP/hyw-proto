@@ -6,6 +6,8 @@
 
 ## `proto/sim/` — `package hyw_sim.proto`
 
+Bazel 按 `common` / `scenario` / `map` / `runtime` 四个 `*_cc_proto` target 引用；无聚合 `sim.proto` 文件。
+
 ### `common.proto`
 
 | 定义 | 含义 |
