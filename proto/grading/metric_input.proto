@@ -58,6 +58,18 @@ message EgoVehicleParams {
   double rear_overhang = 4;
 }
 
+message TrajectoryPoint {
+  double t_s = 1;
+  double x = 2;
+  double y = 3;
+  double heading = 4;
+  double speed = 5;
+}
+
+message PlannedTrajectory {
+  repeated TrajectoryPoint points = 1;
+}
+
 message MetricFrameInput {
   int64 frame_id = 1;
   int64 timestamp_us = 2;
@@ -69,4 +81,5 @@ message MetricFrameInput {
   optional SceneMap scene_map = 7;
   optional EgoVehicleParams ego_vehicle = 8;
   optional RoadContext road_context = 9;
+  optional PlannedTrajectory planned_trajectory = 10;
 }

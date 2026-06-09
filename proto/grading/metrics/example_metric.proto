@@ -10,6 +10,26 @@ message PlanningLimitCheckerConfig {
   double max_desired_speed_mps = 1;
 }
 
+// Filters irrelevant NPCs (e.g. lateral pass-by, behind ego) before TTC scoring.
+message CollisionRiskCheckerConfig {
+  double warn_ttc_s = 1;
+  double critical_ttc_s = 2;
+  double near_clearance_m = 3;
+  // Strategy A: only NPCs in the forward driving corridor (on by default).
+  bool disable_forward_corridor = 4;
+  double max_longitudinal_m = 5;
+  double max_lateral_m = 6;
+  // Strategy B: require closing along ego forward axis (on by default).
+  bool disable_approach_heading = 7;
+  double min_closing_speed_mps = 8;
+  double min_forward_cos = 9;
+  // Strategy C: project NPC onto planned_trajectory from sim (on by default).
+  bool disable_planned_path = 10;
+  double path_lateral_tol_m = 11;
+  // Fraction of NPC width added to lateral tolerance (strategies A and C).
+  double path_npc_width_ratio = 12;
+}
+
 message SpeedCheckerCustomInfo {
   double current_speed = 1;
   bool exceeded = 2;
