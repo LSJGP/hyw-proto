@@ -6,10 +6,6 @@ message SpeedChecker {
   double max_speed_threshold = 1;
 }
 
-message PlanningLimitCheckerConfig {
-  double max_desired_speed_mps = 1;
-}
-
 // Filters irrelevant NPCs (e.g. lateral pass-by, behind ego) before TTC scoring.
 message CollisionRiskCheckerConfig {
   double warn_ttc_s = 1;

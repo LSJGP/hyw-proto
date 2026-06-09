@@ -3,7 +3,7 @@ syntax = "proto3";
 package grading_mini.proto;
 
 // One metric to instantiate. Optional params_json is a JSON object string
-// parsed per metric type (e.g. SpeedChecker, PlanningLimitCheckerConfig).
+// parsed per metric type (e.g. SpeedChecker).
 message MetricInstance {
   string name = 1;
   string params_json = 2;

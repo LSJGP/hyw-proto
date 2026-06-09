@@ -70,6 +70,17 @@ message PlannedTrajectory {
   repeated TrajectoryPoint points = 1;
 }
 
+message RoutePose2D {
+  double x = 1;
+  double y = 2;
+  double yaw = 3;
+}
+
+message SdcRouteContext {
+  RoutePose2D start = 1;
+  RoutePose2D end = 2;
+}
+
 message MetricFrameInput {
   int64 frame_id = 1;
   int64 timestamp_us = 2;
@@ -82,4 +93,5 @@ message MetricFrameInput {
   optional EgoVehicleParams ego_vehicle = 8;
   optional RoadContext road_context = 9;
   optional PlannedTrajectory planned_trajectory = 10;
+  optional SdcRouteContext sdc_route = 11;
 }

@@ -2,11 +2,6 @@ syntax = "proto3";
 
 package grading_mini.proto;
 
-message LaneDepartureCheckerConfig {
-  double min_road_edge_clearance_m = 1;
-  double min_lane_boundary_clearance_m = 2;
-}
-
 message DrivableAreaCheckerConfig {
   double min_clearance_m = 1;
   bool check_center_only = 2;
@@ -14,4 +9,35 @@ message DrivableAreaCheckerConfig {
 
 message SolidLineCrossingCheckerConfig {
   double min_clearance_m = 1;
+}
+
+message HardBrakingCheckerConfig {
+  double min_decel_threshold_mps2 = 1;
+  double min_speed_mps = 2;
+}
+
+message HardBrakingCheckerCustomInfo {
+  double current_acceleration = 1;
+  double current_speed = 2;
+  bool hard_braking = 3;
+}
+
+message EgoProgressCheckerConfig {
+  double progress_exponent = 1;
+  double pass_threshold = 2;
+}
+
+message EgoProgressCheckerCustomInfo {
+  double signed_progress_m = 1;
+  double along_ratio = 2;
+  double frame_score = 3;
+  bool reached_end_line = 4;
+}
+
+message PdmsAggregatorConfig {
+  double weight_ep = 1;
+  double weight_ttc = 2;
+  double weight_c = 3;
+  double weight_speed = 4;
+  double pass_threshold = 5;
 }
