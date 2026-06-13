@@ -4,6 +4,10 @@ package grading_mini.proto;
 
 message SpeedChecker {
   double max_speed_threshold = 1;
+  // Fail when cruising slower than this (m/s). Omit to use checker default.
+  optional double min_speed_threshold_mps = 2;
+  // Fail when longitudinal acceleration exceeds this (m/s^2). Omit for default.
+  optional double max_acceleration_mps2 = 3;
 }
 
 // Filters irrelevant NPCs (e.g. lateral pass-by, behind ego) before TTC scoring.
@@ -29,4 +33,7 @@ message CollisionRiskCheckerConfig {
 message SpeedCheckerCustomInfo {
   double current_speed = 1;
   bool exceeded = 2;
+  double current_acceleration = 3;
+  bool too_slow = 4;
+  bool excessive_acceleration = 5;
 }

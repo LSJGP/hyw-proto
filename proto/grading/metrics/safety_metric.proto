@@ -25,6 +25,8 @@ message HardBrakingCheckerCustomInfo {
 message EgoProgressCheckerConfig {
   double progress_exponent = 1;
   double pass_threshold = 2;
+  // Blend in [0, 1]: 0 = position only, 1 = position * efficiency.
+  optional double efficiency_weight = 3;
 }
 
 message EgoProgressCheckerCustomInfo {
@@ -32,6 +34,9 @@ message EgoProgressCheckerCustomInfo {
   double along_ratio = 2;
   double frame_score = 3;
   bool reached_end_line = 4;
+  double efficiency_score = 5;
+  double combined_frame_score = 6;
+  double sim_duration_s = 7;
 }
 
 message PdmsAggregatorConfig {
